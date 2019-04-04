@@ -107,12 +107,10 @@ $(document).ready(function () {
     });
 
     $('#CampoCPF').mask('000.000.000-00', {reverse: true});
-    $('#CampoTel').mask('(00) 00000-0000');
+    $('#CampoTel').mask('(00)0 0000-0000');
 });
 
-
-
-function pesquisarCPF(cpf) {
+/*function pesquisarCPF(cpf) {
     var url = "http://localhost/json/json.php";
     $.ajax({
         type: "POST",
@@ -157,7 +155,7 @@ $(document).ready(function () {
             }
         });
     }
-});
+});*/
 
 function instagram() {
     window.open('https://www.instagram.com/?hl=pt-br', '_blank');
