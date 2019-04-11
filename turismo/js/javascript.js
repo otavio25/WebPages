@@ -1,11 +1,6 @@
 $(document).ready(function () {
-    $("#menu").load("menu.html");
     $("#Historia").load("historia.html");
-    $("#login").hide();
-});
-
-$(document).on('click', '.BtnLogin', function () {
-    $("#login").toggle();
+    $("#menu").load("menu.html"); 
 });
 
 $(document).ready(function () {
@@ -15,18 +10,21 @@ $(document).ready(function () {
     pagina = pagina.substring(numero + 2, numero + 1);
 
     if (pagina === "b") {
+        $("#tituloAba").text("Barcelona | Tour no Velho Continente !");
         $("#c1").attr("src", "img/barcelona1.jpg");
         $("#c2").attr("src", "img/barcelona2.jpg");
         $("#c3").attr("src", "img/barcelona3.jpg");
         $("#TitleCity").text("Barcelona(ESP)");
 
     } else if (pagina === "c") {
+        $("#tituloAba").text("Creta | Tour no Velho Continente !");
         $("#c1").attr("src", "img/creta1.jpg");
         $("#c2").attr("src", "img/creta2.jpg");
         $("#c3").attr("src", "img/creta3.jpg");
         $("#TitleCity").text("Creta(GRE)");
 
     } else if (pagina === "d") {
+        $("#tituloAba").text("Dubrovnik | Tour no Velho Continente !");
         $("#c1").attr("src", "img/dubrovnik1.jpg");
         $("#c2").attr("src", "img/dubrovnik2.jpg");
         $("#c3").attr("src", "img/dubrovnik3.jpg");
@@ -36,126 +34,116 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#CampoCPF").focusout(function () {
-        var cpf = $("#CampoCPF").val();
-        pesquisarCPF(cpf);
-    });
-});
-
-$(document).ready(function () {
 
     $("#erroNome").hide();
     $("#erroCPF").hide();
     $("#erroIdade").hide();
     $("#erroTel").hide();
     $("#erroEnd").hide();
+    $("#erroCEP").hide();
     $("#erroEmail").hide();
     $("#erroSenha").hide();
+    $("#erroSenha2").hide();
+
+    $("#erroEmailLogin").hide();
+    $("#erroSenhaLogin").hide();
+
     $("#cadastrar").click(function () {
-        var validar = 0;
+        var validarCad = 0;
+
         if ($("#CampoNome").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroNome").show();
         } else {
             $("#erroNome").hide();
         }
 
         if ($("#CampoCPF").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroCPF").show();
         } else {
             $("#erroCPF").hide();
         }
 
         if ($("#CampoIdade").val() == "" || $("#CampoIdade").val() < 14) {
-            validar++;
+            validarCad++;
             $("#erroIdade").show();
         } else {
             $("#erroIdade").hide();
         }
 
         if ($("#CampoTel").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroTel").show();
         } else {
             $("#erroTel").hide();
         }
 
         if ($("#CampoEnd").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroEnd").show();
         } else {
             $("#erroEnd").hide();
         }
 
+        if ($("#CampoCEP").val() == "") {
+            validarCad++;
+            $("#erroCEP").show();
+        } else {
+            $("#erroCEP").hide();
+        }
+
         if ($("#exampleInputEmail1").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroEmail").show();
         } else {
             $("#erroEmail").hide();
         }
 
         if ($("#exampleInputPassword1").val() == "") {
-            validar++;
+            validarCad++;
             $("#erroSenha").show();
         } else {
             $("#erroSenha").hide();
         }
 
-        if (validar == 0)
+        if ($("#exampleInputPassword2").val() == "") {
+            validarCad++;
+            $("#erroSenha2").show();
+        } else {
+            $("#erroSenha2").hide();
+        }
+
+        if (validarCad == 0)
             $("#cadastrar").attr("type", "submit");
+    
+    });
+
+    $("#logar").click(function(){
+            var validarLogin = 0;
+
+        if ($("#exampleInputEmail2").val() == "") {
+            validarLogin++;
+            $("#erroEmailLogin").show();
+        } else {
+            $("#erroEmailLogin").hide();
+        }
+
+        if ($("#exampleInputPassword3").val() == "") {
+            validarLogin++;
+            $("#erroSenhaLogin").show();
+        } else {
+            $("#erroSenhaLogin").hide();
+        }
+
+        if (validarLogin == 0)
+            $("#logar").attr("type", "submit");
     });
 
     $('#CampoCPF').mask('000.000.000-00', {reverse: true});
     $('#CampoTel').mask('(00)0 0000-0000');
+    $('#CampoCEP').mask('00000-000');
 });
-
-/*function pesquisarCPF(cpf) {
-    var url = "http://localhost/json/json.php";
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: url,
-        data: {cpf: cpf},
-        success: function (resultado) {
-
-            if (resultado) {
-                $("#erroCPF").text("(CPF informado já foi cadastrado)");
-                $("#erroCPF").show();
-            }
-        }
-    });
-}
-
-$(document).ready(function () {
-    pesquisarDados();
-    function pesquisarDados() {
-        var url = "http://localhost/json/listar.php";
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: url,
-            success: function (resultado) {
-                var dados = "";
-                var i;
-                for (i = 0; i < resultado.length; i++) {
-                    dados += "<tr>";
-                    dados += "<td>" + resultado[i].cpf + "</td>";
-                    dados += "<td>" + resultado[i].nome + "</td>";
-                    dados += '<td class="idade">' + resultado[i].idade + "</td>";
-                    dados += "</tr>";
-                }
-                $("tbody").html(dados);
-
-                $(".idade").each(function () {
-                    if ($(this).text() > 12)
-                        $(this).css("color", "red");
-                });
-
-            }
-        });
-    }
-});*/
 
 function instagram() {
     window.open('https://www.instagram.com/?hl=pt-br', '_blank');

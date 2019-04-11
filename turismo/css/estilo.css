@@ -18,9 +18,15 @@ body{
 }
 
 .formularioLogin{
-    margin-top: 13em;
+    margin-top: 10em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+}
+
+#linkcadastro{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .formularioCadastro{
@@ -39,6 +45,14 @@ body{
 .validacao{
     color: red;
     font-size: 15px;
+}
+
+#cadastrar{
+    margin-left: 220px;
+}
+
+#logar{
+    margin-left: 220px;
 }
 
 .descricao{
@@ -62,10 +76,6 @@ body{
 
 #PortalDescricao{
     margin-top: 85px;
-}
-
-.lista{
-    margin-top: 10em;
 }
 
 
